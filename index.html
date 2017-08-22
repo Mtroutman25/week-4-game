@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Week-4-Game</title>
+
+	
+	<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+
+<div class="jumbotron">
+  <h1 class="display-3">Lucky Diamonds!</h1>
+
+  <h1>Number to Guess: <span id="number-to-guess"></span></h1>
+	
+ 
+  <div id="diamonds">
+  </div>
+
+ 
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+
+  var targetNumber = 98;
+
+  $("#number-to-guess").text(targetNumber);
+
+  var counter = 0;
+
+  var numberOptions = [50, 25, 3, 2];
+
+
+  for (var i = 0; i < numberOptions.length; i++) {
+
+    // For each iteration, we will create an imageCrystal
+    var imageDiamond = $("<img>");
+
+    
+    imageDiamond.addClass("diamond-image");
+
+   
+    imageDiamond.attr("src", "diamond.jpg");
+
+    
+    imageDiamond.attr("data-diamondlvalue", numberOptions[i]);
+
+
+    $("#diamonds").append(imageDiamond);
+  }
+
+  $(".diamond-image").on("click", function() {
+
+    
+    
+    var diamondValue = ($(this).attr("data-diamondvalue"));
+    diamondValue = parseInt(diamondValue);
+  
+    counter += diamondValue;
+
+  
+    alert("New score: " + counter);
+
+    if (counter === targetNumber) {
+      alert("You win!");
+    }
+
+    else if (counter >= targetNumber) {
+      alert("You lose!!");
+    }
+
+  });
+
+  </script>
+  
+</div>
+	
+</body>
+</html>
